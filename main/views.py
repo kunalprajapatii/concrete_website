@@ -5,7 +5,7 @@ from .models import Contact
 from django.core.mail import send_mail
 from django.conf import settings
 
-def home(request):
+def index(request):
     services = [
         {'description': "Precision woodwork tailored to your space.", 'icon': 'main/carpentry.png'},
         {'description': "Reliable plumbing solutions when you need them most.", 'icon': 'main/plumbing.png'},
@@ -36,8 +36,8 @@ def home(request):
                 print("Email Error:", e)
 
             messages.success(request, "Thank you for contacting us!")
-            return redirect('home')
+            return redirect('index')
     else:
         form = ContactForm()
 
-    return render(request, 'main/home.html', {'form': form, 'services': services})
+    return render(request, 'main/index.html', {'form': form, 'services': services})
